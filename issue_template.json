@@ -1,0 +1,9 @@
+{
+  "title": "New commit to: ",
+  "body": "There was a new commit/commits to tree-sitter-python, please check the newly updated codebase. Here are the recent commit(s): ",
+  "labels": [
+    "Type: Maintenance",
+    "Status: Available",
+    "Status: Review Needed"
+  ]
+}

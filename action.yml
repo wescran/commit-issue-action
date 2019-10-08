@@ -1,0 +1,23 @@
+# action.yml
+name: 'Commit-Issue-Action'
+author: 'wescran'
+description: 'Create an issue when a commit is made on a repository'
+inputs:
+  sourceRepo:
+    description: 'Repository to watch for commits to'
+    required: true
+  targetRepo:
+    description: 'Repository to create issues in'
+    required: true
+outputs:
+  issueURL:
+    description: 'The html url of the created issue'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.sourceRepo }}
+    - ${{ inputs.targetRepo }}
+branding:
+  icon: 'git-commit'
+  color: 'green'
