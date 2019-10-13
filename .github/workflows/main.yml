@@ -12,7 +12,7 @@ jobs:
         id: issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: wescran/commit-issue-action@v1
+        uses: wescran/commit-issue-action@master
         with:
           sourceRepo: 'tree-sitter/tree-sitter-python'
           targetRepo: 'wescran/commit-issue-action'
