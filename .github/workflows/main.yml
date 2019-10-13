@@ -14,7 +14,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: wescran/commit-issue-action@master
         with:
-          sourceRepo: 'tree-sitter/tree-sitter-python'
+          sourceRepo: 'wescran/commit-issue-action'
           targetRepo: 'wescran/commit-issue-action'
       - name: Get the issue url
         if: success() && steps.issue.outputs.issue_url != ''
