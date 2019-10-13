@@ -13,7 +13,7 @@ create_issue()
   created=$?
   if [ $created -ne 0 ]; then
     echo "Error with request: $issue"
-    return $check
+    exit $created
   else
     echo "Issue created in $INPUT_TARGETREPO"
     issueURL=$(echo $issue | tr '\n' ' ' | jq -r '.html_url')
@@ -27,7 +27,7 @@ check_commits()
   check=$?
   if [ $check -ne 0 ]; then
     echo "Error with request: $commits"
-    return $check
+    exit $check
   fi
   if [ "$(echo $commits)" = "[ ]" ]; then
     return 1
@@ -48,12 +48,11 @@ main()
     result=$?
     if [ $result -eq 0 ]; then
       echo ::set-output name=issue_url::$issueURL
-    else
-      echo ::set-output name=issue_url::$result 
+      exit 0
     fi
   else
     echo "No recent commits found."
-    echo ::set-output name=issue_url::$found 
+    exit 0 
   fi
 }
 

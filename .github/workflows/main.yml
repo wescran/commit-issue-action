@@ -1,0 +1,19 @@
+on:
+  schedule:
+    - cron: '0 * * * *' #runs every hour
+jobs:
+  commit_issue_job:
+    runs-on: ubuntu-latest
+    name: A job to create an issue if a commit was made
+    steps:
+      - name: Commit issue action step
+        id: issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: wescran/commit-issue-action@v1
+        with:
+          sourceRepo: 'tree-sitter/tree-sitter-python'
+          targetRepo: 'wescran/commit-issue-action'
+      - name: Get the issue url
+        if: success() && steps.issue.outputs.issue_url != ''
+        run: echo "The created issue can be found here: ${{ steps.issue.outputs.issue_url }}"
