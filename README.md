@@ -1,5 +1,5 @@
 # commit-issue-action
-GitHub action that monitors public repositories for commits and creates an issue if found.
+GitHub action that monitors public repositories for commits and creates an issue if found. There is also an issue template that you can edit yourself to fit your needs for the issue you would like to create if commits are found.
 
 ## Inputs
 
