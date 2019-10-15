@@ -22,7 +22,7 @@ If an issue is created, an html url for the issue will ouput.
 
 ## Example usage
 ```
-uses: wescran/commits-issue-action@v1
+uses: wescran/commit-issue-action@v1
 with:
   sourceRepo: 'wescran/commit-issue-action'
   targetRepo: 'wescran/commit-issue-action'
