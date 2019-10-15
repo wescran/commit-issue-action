@@ -9,6 +9,9 @@ inputs:
   targetRepo:
     description: 'Repository to create issues in'
     required: true
+  issueLabels:
+    description: 'Comma-with-space separated labels for the issue'
+    required: false
 outputs:
   issueURL:
     description: 'The html url of the created issue'
@@ -18,6 +21,7 @@ runs:
   args:
     - ${{ inputs.sourceRepo }}
     - ${{ inputs.targetRepo }}
+    - ${{ inputs.issueLabels }}
 branding:
   icon: 'git-commit'
   color: 'green'

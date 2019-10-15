@@ -8,7 +8,10 @@ create_issue()
   for u in $commiturls; do
     urls=$urls'<br />'"$u"
   done
-  json=$(jq -rc --arg src "$INPUT_SOURCEREPO" --arg urls "$urls" '.title += $src | .body += $urls' issue_template.json)
+  title="New commit to $INPUT_SOURCEREPO"
+  body="There was a new commit/commits to $INPUT_SOUCEREPO, please check the newly updated codebase. Here are the recent commits: $urls"
+  labels=$INPUT_LABELS
+  json=$(jq -nc --arg l "$labels" --arg t "$title" --arg b "$body" '$l | split(", ") | {title: $t, body: $b, labels: .}')
   issue=$(curl -sS -X POST "$API/repos/$INPUT_TARGETREPO/issues" -H "authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d "$json")
   created=$?
   if [ $created -ne 0 ]; then
