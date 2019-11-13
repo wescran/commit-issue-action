@@ -54,7 +54,7 @@ main()
       exit 0
     fi
   else
-    echo "No recent commits found."
+    echo "No recent commits found. Response code was $found"
     exit 0 
   fi
 }
