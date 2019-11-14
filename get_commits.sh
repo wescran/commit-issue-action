@@ -19,7 +19,7 @@ create_issue()
     exit $created
   else
     echo "Issue created in $INPUT_TARGETREPO"
-    issueURL=$(echo $issue | tr '\n' ' ' | jq -r '.html_url')
+    issueURL=$(jq -n "$issue" | jq -r '.html_url')
     return 0
   fi
 }
@@ -35,7 +35,7 @@ check_commits()
   if [ "$(echo $commits)" = "[ ]" ]; then
     return 1
   else
-    commiturls=$(echo $commits | tr '\n' ' ' | jq -r ".[] | .html_url")
+    commiturls=$(jq -n "$commits" | jq -r ".[] | .html_url")
     return 0
   fi
 }
