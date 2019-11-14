@@ -10,7 +10,7 @@ create_issue()
   done
   title="New commit to $INPUT_SOURCEREPO"
   body="There was a new commit/commits to $INPUT_SOURCEREPO, please check the newly updated codebase. Here are the recent commits: $urls"
-  labels=$INPUT_LABELS
+  labels=$INPUT_ISSUELABELS
   json=$(jq -nc --arg l "$labels" --arg t "$title" --arg b "$body" '$l | split(", ") | {title: $t, body: $b, labels: .}')
   issue=$(curl -sS -X POST "$API/repos/$INPUT_TARGETREPO/issues" -H "authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -d "$json")
   created=$?
