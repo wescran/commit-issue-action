@@ -26,7 +26,7 @@ create_issue()
 
 check_commits()
 {
-  commits=$(curl -sS "$API/repos/$INPUT_SOURCEREPO/commits?since=$(date -u -d '10 days ago' +"%Y-%m-%dT%H:%M:%SZ")&until=$(date -u +"%Y-%m-%dT%H:%M:%SZ")")
+  commits=$(curl -sS "$API/repos/$INPUT_SOURCEREPO/commits?since=$(date -u -d '1 hour ago' +"%Y-%m-%dT%H:%M:%SZ")&until=$(date -u +"%Y-%m-%dT%H:%M:%SZ")")
   check=$?
   if [ $check -ne 0 ]; then
     echo "Error with request: $commits"
