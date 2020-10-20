@@ -1,9 +1,8 @@
-FROM alpine:3.10
+FROM alpine
 
 COPY get_commits.sh /get_commits.sh
 
-RUN apk --update add coreutils && \
-    apk --update add jq && \
-    apk --update add curl 
+RUN apk --update --no-cache add jq && \
+    apk --update --no-cache add curl 
 
 ENTRYPOINT ["/get_commits.sh"]
