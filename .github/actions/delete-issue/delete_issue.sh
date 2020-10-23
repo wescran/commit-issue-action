@@ -17,4 +17,4 @@ LENGTH=$(jq -n $ID | jq '.data.repository.issues.edges|length')
 OUT=$(jq -n $ID | jq -rc '.data.repository.issues.edges[] | .node.id' | xargs -I {} -P 4 curl -fsSL -H "$AUTH" -X POST -d '{"query": "mutation{deleteIssue(input:{issueId: \"{}\"}) {repository{nameWithOwner}}}"}' "$API" | jq -s '.|length')
 [ $? -ne 0 ] && error_exit "Error with mutation"
 [ $OUT -ne $LENGTH ] && null_exit "Lengths differ"
-exit 0
+echo "Deleted issues with shellspec labels" && exit 0
