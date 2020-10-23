@@ -1,0 +1,7 @@
+# action.yml
+name: 'delete-issue-action'
+author: 'wescran'
+description: 'Delete issue with shellspec label'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

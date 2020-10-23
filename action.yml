@@ -12,6 +12,12 @@ inputs:
   issueLabels:
     description: 'Comma-with-space separated labels for the issue'
     required: false
+  timeUntil:
+    description: 'Only commits before this date will be found, in epoch(seconds). Defaults to current date'
+    required: false
+  timeFrame:
+    description: 'Time, in Unix time(seconds), to look back from timeUntil for commits. Defaults to 1 hour ago'
+    required: false
 outputs:
   issueURL:
     description: 'The html url of the created issue'
@@ -22,6 +28,8 @@ runs:
     - ${{ inputs.sourceRepo }}
     - ${{ inputs.targetRepo }}
     - ${{ inputs.issueLabels }}
+    - ${{ inputs.timeUntil }}
+    - ${{ inputs.timeFrame }}
 branding:
   icon: 'git-commit'
   color: 'green'

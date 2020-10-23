@@ -1,0 +1,17 @@
+on: [push]
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    name: Tests source code of action
+    steps:
+      - uses: actions/checkout@v2
+      - name: use shellspec
+        id: shellspec
+        run: docker run -v $GITHUB_WORKSPACE:/ shellspec/shellspec:latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Delete shellspec issue
+        if: ${{ success() }}
+        uses: ./.github/actions/delete-issue 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
