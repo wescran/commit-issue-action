@@ -6,8 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: use shellspec
-        id: shellspec
-        run: docker run -v "$GITHUB_WORKSPACE:/src" shellspec/shellspec:latest
+        run: docker run -v "$GITHUB_WORKSPACE:/src" wescran/shellspec:latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Delete shellspec issue
