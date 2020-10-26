@@ -1,0 +1,7 @@
+# action.yml
+name: 'shellspec'
+author: 'wescran'
+description: 'Updated image to include curl and jq'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

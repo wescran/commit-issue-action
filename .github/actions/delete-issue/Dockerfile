@@ -1,8 +1,8 @@
 FROM alpine
 
-COPY get_commits.sh /get_commits.sh
+COPY delete_issue.sh /delete_issue.sh
 
 RUN apk --update --no-cache add jq && \
     apk --update --no-cache add curl 
 
-ENTRYPOINT ["/get_commits.sh"]
+ENTRYPOINT ["/delete_issue.sh"]

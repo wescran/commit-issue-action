@@ -1,0 +1,16 @@
+on: [push]
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    name: Tests source code of action
+    steps:
+      - uses: actions/checkout@v2
+      - name: use shellspec
+        run: docker run -v "$GITHUB_WORKSPACE:/src" -e "GITHUB_TOKEN=$GITHUB_TOKEN" wescran/shellspec:latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Delete shellspec issue
+        if: ${{ success() }}
+        uses: ./.github/actions/delete-issue 
+        env:
+          GITHUB_TOKEN: ${{ secrets.ISSUE_SECRET }}
