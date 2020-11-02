@@ -17,6 +17,12 @@ Describe "mock date to known commit"
     The output should include "There is a new commit"
     The output should include "Issue created"
   End
+  It "runs script with recent commits and more labels"
+    When run script get_commits.sh "wescran/commit-issue-action" "wescran/commit-issue-action" "shellspec, test, Status: Available" "1574124013"
+    The status should be success
+    The output should include "There is a new commit"
+    The output should include "Issue created"
+  End
 End
 Describe "short time frame"
   It "runs script with no recent commits"
