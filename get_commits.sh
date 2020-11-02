@@ -52,4 +52,4 @@ check_commits "$1" "$4" "$5" && echo "There is a new commit to ${1}! Creating is
 create_issue "$1" "$2" "$3" && echo ::set-output name=issue_url::${issueURL}
 exit 0
 }
-main ${INPUT_SOURCEREPO:-$1} ${INPUT_TARGETREPO:-$2} ${INPUT_ISSUELABELS:-${3:-""}} ${INPUT_TIMEUNTIL:-${4:-$UNTIL}} ${INPUT_TIMEFRAME:-${5:-$TIMEFRAME}}
+main "${INPUT_SOURCEREPO:-$1}" "${INPUT_TARGETREPO:-$2}" "${INPUT_ISSUELABELS:-${3:-""}}" "${INPUT_TIMEUNTIL:-${4:-$UNTIL}}" "${INPUT_TIMEFRAME:-${5:-$TIMEFRAME}}"
